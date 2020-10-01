@@ -50,3 +50,7 @@ quedan igual
 
 para ver el mejor score del estudiante te vas con get request a http://localhost:3000/api/students/id/level donde id es el id del usuario y level el numero
 del nivel (1,2,3,4) la respuesta es un objeto del historial donde tendras la fecha, score, time. Se saca ese objeto calculado el mejor score obviamente
+
+
+para conseguir todas las respeustas en una entrada de cierta pregunta haces get request en http://localhost:3000/api/history/id/qnumber 
+qnumber es el numero de pregunta a la que le quieres ver las respuestas 

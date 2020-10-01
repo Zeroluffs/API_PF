@@ -4,4 +4,6 @@ const history = require('../controllers/history.controller')
 router.get("/", history.getHistory)
 router.post('/:id', history.createHistoryEntry)
 router.put('/:id', history.updateEntry)
+router.get("/:id/:qnumber", history.getHistoryByQN)
+
 module.exports = router;

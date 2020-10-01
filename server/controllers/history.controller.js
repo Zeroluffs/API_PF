@@ -28,6 +28,18 @@ historyCtrl.getHistory = async (req, res) => {
   res.json(history);
 };
 
+historyCtrl.getHistoryByQN = async (req, res) => {
+  const history = await History.findById(req.params.id).populate("answer");
+  const test2 = [];
+  for (i = 0; i < history.answer.length; i++) {
+    const n = history.answer;
+    if (n[i].questionNumber == req.params.qnumber) {
+      test2.push(n[i]);
+    }
+  }
+  res.send(test2);
+};
+
 historyCtrl.updateEntry = async (req, res) => {
   const history = {
     score: req.body.score,
