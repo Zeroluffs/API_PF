@@ -10,6 +10,7 @@ historyCtrl.createHistoryEntry = async (req, res) => {
     level: req.body.level,
     score: req.body.score,
     time: req.body.time,
+    problem: req.body.problem
   });
 
   await history.save();
