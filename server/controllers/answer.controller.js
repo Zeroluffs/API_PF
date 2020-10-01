@@ -8,6 +8,7 @@ answerCtrl.createAnswer = async (req, res) => {
     questionNumber : req.body.questionNumber,
     index: req.body.index,
     answer: req.body.answer,
+    problem: req.body.problem,
     pos_x: req.body.pos_x,
     pos_y: req.body.pos_y,
     historyEntry_id: req.params.id,

@@ -4,6 +4,7 @@ const { Schema } = mongoose;
 const AnswerSchema = new Schema(
   {
     questionNumber: String,
+    problem: String,
     index: String,
     answer: String,
     pos_x: String,

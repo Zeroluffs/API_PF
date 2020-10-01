@@ -10,7 +10,6 @@ const HistorySchema = new Schema(
     level: String,
     time: String,
     score: String,
-    problem: String,
     answer: [
       {
         type: Schema.Types.ObjectId,
