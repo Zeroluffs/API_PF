@@ -23,22 +23,22 @@ userCtrl.createUser = async (req, res) => {
   });
   await student.save();
   await user.save();
-  res.send(student._id)
+  res.send(student._id);
 };
 
 userCtrl.logIn = async (req, res) => {
   const { email, password } = req.body;
-  const user = await User.findOne({ email });
+  const user = await Student.findOne({ email });
   if (!user) {
+    return res.status(401).send("Email or password does not exist");
+  }
+  if (user.password != password) {
     return res.status(401).send("Email or password does not exist");
   }
 
   //validates  hashed password in database with the one you just sent
 
-  res.json({
-    status: "you are logged",
-  });
+  res.send(user._id);
 };
-
 
 module.exports = userCtrl;
