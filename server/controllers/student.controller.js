@@ -23,7 +23,7 @@ studentCtrl.getBestOfStudent = async (req, res) => {
       test2.push(n[i]);
     }
   }
-  test2.sort((a,b) => (a.score < b.score) ? 1 : ((b.score < a.score) ? -1 : 0)); 
+  test2.sort((a,b) => (a.score > b.score) ? 1 : ((b.score > a.score) ? -1 : 0)); 
 
   const bestScore = test2[0]
   res.send(bestScore);
