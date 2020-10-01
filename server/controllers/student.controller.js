@@ -4,12 +4,12 @@ const express = require("express");
 
 const studentCtrl = {};
 
-studentCtrl.getStudents = async (req, res) => {
+studentCtrl.getAllStudents = async (req, res) => {
   const students = await Student.find();
   res.json(students);
 };
 
-studentCtrl.getStudents = async (req, res) => {
+studentCtrl.getStudent = async (req, res) => {
   const student = await Student.findById(req.params.id).populate("history");
   res.json(student);
 };

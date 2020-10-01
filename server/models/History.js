@@ -10,10 +10,12 @@ const HistorySchema = new Schema(
     level: String,
     time: String,
     score: String,
-    answer: {
-      type: Schema.Types.ObjectId,
-      ref: "Answer",
-    },
+    answer: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Answer",
+      },
+    ],
   },
   {
     timestamps: true,

@@ -23,7 +23,7 @@ userCtrl.createUser = async (req, res) => {
   });
   await student.save();
   await user.save();
-  res.send(user._id)
+  res.send(student._id)
 };
 
 userCtrl.logIn = async (req, res) => {

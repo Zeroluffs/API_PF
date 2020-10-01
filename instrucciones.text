@@ -1,18 +1,11 @@
-Para crear una nueva entrada en el historial te diriges a la ruta http://localhost:3000/api/history con post request 
-
-creas un json con estos parametros (lo que te mando todavia no esta conectado con los usuarios)
-
-{  
-    "user_id": "jsdjdjkdk",
-    "level": "Level 1"
-}
 
 para agregar las respuestas a esa entrada en el historial te vas a la ruta http://localhost:3000/api/answer/id donde id es el _id de la entrada en el historial que puedes ver haciendole get request a 
  http://localhost:3000/api/history
 
 agregas en un json estos campos 
 
-{  
+{
+    "questionNumber": "1",
     "index": "jsdjdjkdk",
     "answer": "yes",
     "pos_x": "23423",

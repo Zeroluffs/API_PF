@@ -9,7 +9,7 @@ answerCtrl.createAnswer = async (req, res) => {
     index: req.body.index,
     answer: req.body.answer,
     pos_x: req.body.pos_x,
-    post_y: req.body_pos_y,
+    pos_y: req.body.pos_y,
     historyEntry_id: req.params.id,
   });
   await answer.save();
