@@ -47,3 +47,12 @@ del nivel (1,2,3,4) la respuesta es un objeto del historial donde tendras la fec
 
 para conseguir todas las respeustas en una entrada de cierta pregunta haces get request en http://localhost:3000/api/history/id/qnumber 
 qnumber es el numero de pregunta a la que le quieres ver las respuestas 
+
+
+para el logeo te vas const post request a http://localhost:3000/api/users/login
+{
+    "email": "nkfbf@gmail.com",
+    "password": "123"
+}
+
+cuando te logeas te devuelve el id de estudiante
