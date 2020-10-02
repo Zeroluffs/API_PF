@@ -23,9 +23,16 @@ studentCtrl.getBestOfStudent = async (req, res) => {
       test2.push(n[i]);
     }
   }
-  test2.sort((a,b) => (a.score < b.score) ? 1 : ((b.score < a.score) ? -1 : 0)); 
+  //test2.sort((a, b) => (Number(a.score) < Number(b.score) ? 1 : Number(b.score) < Number(a.score) ? -1 : 0));
 
-  const bestScore = test2[0]
+  const compare = function (a, b) {
+    return parseInt(b.score) - parseInt(a.score);
+  };
+
+  const final = test2.sort(compare);
+  //console.log(test2.sort(compare))
+  //console.log(final[0])
+  const bestScore = final[0]
   res.send(bestScore);
 };
 
