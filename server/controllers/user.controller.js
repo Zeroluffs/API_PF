@@ -9,7 +9,7 @@ userCtrl.getUsers = async (req, res) => {
   res.json(users);
 };
 
-userCtrl.createUser = async (req, res) => {
+userCtrl.createUser = (req, res) => {
   const user = new User({
     name: req.body.name,
     email: req.body.email,
@@ -21,9 +21,16 @@ userCtrl.createUser = async (req, res) => {
     email: req.body.email,
     password: req.body.password,
   });
-  await student.save();
-  await user.save();
-  res.send(student._id);
+  user
+    .save()
+    .then((user) => {
+      student.save();
+      res.send(student._id);
+    })
+    .catch((error) => {
+      console.log(error)
+      res.send(400, "Email is already in use");
+    });
 };
 
 userCtrl.logIn = async (req, res) => {

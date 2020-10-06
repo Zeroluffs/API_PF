@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const StudentSchema = new Schema(
   {
     name: String,
-    email: String,
+    email: { type: String, unique: true, required: true, dropDups: true },
     password: String,
     history: [
       {
