@@ -8,7 +8,6 @@ require("dotenv").config({ path: "variables.env" });
 //settings
 const host = process.env.HOST || "0.0.0.0";
 const port = process.env.PORT || 3000;
-var port_number = server.listen(process.env.PORT || 3000);
 
 //middleware
 app.use(cors());
