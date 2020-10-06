@@ -1,12 +1,13 @@
-const mongoose = require('mongoose')
-const URI = 'mongodb://localhost/gameAPP'
+const mongoose = require("mongoose");
+const URI = "mongodb://localhost/gameAPP";
+require("dotenv").config({ path: "variables.env" });
 mongoose
-  .connect(URI, {
+  .connect(process.env.DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
   })
-  .then((db) => console.log('DB is connected'))
-  .catch((err) => console.error(err))
+  .then((db) => console.log("DB is connected"))
+  .catch((err) => console.error(err));
 
-module.exports = mongoose
+module.exports = mongoose;
