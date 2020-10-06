@@ -22,5 +22,5 @@ app.use("/api/users", require("./server/routes/users.routes"));
 
 //starting server
 app.listen(port, host, () => {
-  console.log("Server is Working");
+  console.log("Server is Working", port);
 });
