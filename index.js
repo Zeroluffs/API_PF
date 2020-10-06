@@ -8,6 +8,7 @@ require("dotenv").config({ path: "variables.env" });
 //settings
 const host = process.env.HOST || "0.0.0.0";
 const port = process.env.PORT || 3000;
+var port_number = server.listen(process.env.PORT || 3000);
 
 //middleware
 app.use(cors());
@@ -21,6 +22,6 @@ app.use("/api/students", require("./server/routes/students.routes"));
 app.use("/api/users", require("./server/routes/users.routes"));
 
 //starting server
-app.listen(port, host, () => {
-  console.log("Server is Working", port);
+app.listen(port_number, () => {
+  console.log("Server is Working", port_number);
 });
