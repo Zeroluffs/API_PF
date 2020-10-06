@@ -3,6 +3,10 @@ const URI = "mongodb://localhost/gameAPP";
 require("dotenv").config({ path: "variables.env" });
 mongoose
   .connect(process.env.DB_URL, {
+    auth: {
+      user: "root",
+      password: "root",
+    },
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
