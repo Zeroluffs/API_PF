@@ -56,3 +56,5 @@ para el logeo te vas const post request a http://localhost:3000/api/users/login
 }
 
 cuando te logeas te devuelve el id de estudiante
+
+get request en http://localhost:3000/api/leaderboard/level para que te mande los mejores puntajes de ese nivel 

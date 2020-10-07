@@ -1,8 +1,57 @@
 const Leaderboard = require("../models/Leaderboard");
 const Student = require("../models/Student");
+const History = require("../models/History");
 const express = require("express");
 const leaderboardCtrl = {};
 
+leaderboardCtrl.getBest = async (req, res) => {
+  const historyEntries = await History.find();
+  const test = [];
+  console.log(historyEntries.length);
+  for (i = 0; i < historyEntries.length; i++) {
+    const n = historyEntries;
+    if (n[i].level == req.params.level) {
+      test.push(n[i]);
+    }
+  }
+  const compare = function (a, b) {
+    return parseInt(b.score) - parseInt(a.score);
+  };
+  const final = test.sort(compare);
+  const bestScore = [];
+  for (i = 0; i < final.length; i++) {
+    bestScore.push(final[i]);
+  }
+  /*
+  for (i = 0; i < bestScore.length; i++) {
+    for (j = 0; i < bestScore.length; j++) {
+      if (bestScore[i].score == bestScore[j].score) {
+        if (bestScore[i].time < bestScore[j].time) {
+          const temp = bestScore[i];
+          bestScore[i] = bestScore[j];
+          bestScore[j] = temp;
+        }
+      }
+    }
+  }*/
+  for (i = 0; i < bestScore.length; i++) {
+    for (j = 0; j < bestScore.length; j++) {
+      if (bestScore[i].score == bestScore[j].score) {
+        if (bestScore[i].time < bestScore[j].time) {
+          console.log(bestScore[i].score, "here");
+          const temp = bestScore[i];
+          bestScore[i] = bestScore[j];
+          bestScore[j] = temp;
+        }
+      }
+    }
+  }
+
+
+  res.json(bestScore);
+};
+
+/*
 leaderboardCtrl.getAll = async (req, res) => {
   const leaderboard = await Leaderboard.find();
   res.json(leaderboard);
@@ -60,5 +109,6 @@ leaderboardCtrl.updateInstance = async (req, res) => {
     status: "Leaderboard Updated",
   });
 };
+*/
 
 module.exports = leaderboardCtrl;
