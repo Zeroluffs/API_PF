@@ -33,7 +33,7 @@ studentCtrl.getBestOfStudent = async (req, res) => {
   //console.log(test2.sort(compare))
   //console.log(final[0])
   const bestScore = final[0]
-  res.send(bestScore);
+  res.send(final);
 };
 
 module.exports = studentCtrl;
