@@ -12,14 +12,14 @@ userCtrl.getUsers = async (req, res) => {
 userCtrl.createUser = (req, res) => {
   const user = new User({
     name: req.body.name,
+    code: req.body.code,
     email: req.body.email,
-    password: req.body.password,
   });
 
   const student = new Student({
     name: req.body.name,
+    code: req.body.code,
     email: req.body.email,
-    password: req.body.password,
   });
   user
     .save()

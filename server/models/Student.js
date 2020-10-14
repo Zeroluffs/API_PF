@@ -6,6 +6,7 @@ const StudentSchema = new Schema(
     name: String,
     email: { type: String, unique: true, required: true, dropDups: true },
     password: String,
+    code: String,
     history: [
       {
         type: Schema.Types.ObjectId,
