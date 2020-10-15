@@ -15,10 +15,13 @@ studentCtrl.getStudent = async (req, res) => {
 };
 
 studentCtrl.makePassword = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, code } = req.body;
   const student = await Student.findOne({ email });
   if (!student) {
     return res.status(401).send("Email does not exist");
+  }
+  if (student.code != code) {
+    return res.status(401).send("Student Code is Incorrect");
   }
   const info = {
     password: req.body.password,
