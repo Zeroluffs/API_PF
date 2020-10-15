@@ -43,7 +43,7 @@ studentCtrl.getBestOfStudent = async (req, res) => {
   const test2 = [];
   for (i = 0; i < student.history.length; i++) {
     const n = student.history;
-    if (n[i].level == req.params.level) {
+    if (n[i].level == req.params.level && n[i].score != null && n[i].time != null) {
       test2.push(n[i]);
     }
   }
