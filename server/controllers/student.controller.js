@@ -23,10 +23,15 @@ studentCtrl.makePassword = async (req, res) => {
   const info = {
     password: req.body.password,
   };
-  console.log(student._id)
-  await Student.findByIdAndUpdate(student._id, { $set: info }, { new: true });
+  console.log(student._id);
+  if (student.password == null) {
+    await Student.findByIdAndUpdate(student._id, { $set: info }, { new: true });
+    res.json({
+      status: "Password Assigned",
+    });
+  }
   res.json({
-    status: "Password Assigned",
+    status: "User already has a password",
   });
 };
 
