@@ -10,7 +10,7 @@ leaderboardCtrl.getBest = async (req, res) => {
   console.log(historyEntries.length);
   for (i = 0; i < historyEntries.length; i++) {
     const n = historyEntries;
-    if (n[i].level == req.params.level) {
+    if (n[i].level == req.params.level && n[i].score !=null && n[i].time!=null ) {
       test.push(n[i]);
     }
   }
