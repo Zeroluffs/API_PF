@@ -27,6 +27,10 @@ historyCtrl.getHistory = async (req, res) => {
   const history = await History.find();
   res.json(history);
 };
+historyCtrl.getHistoryEntryByUser = async (req, res) => {
+  const history = await History.find(req.params.id);
+  res.json(history);
+};
 
 historyCtrl.getHistoryByQN = async (req, res) => {
   const history = await History.findById(req.params.id).populate("answer");
