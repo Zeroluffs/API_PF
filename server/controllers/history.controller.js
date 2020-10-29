@@ -28,7 +28,7 @@ historyCtrl.getHistory = async (req, res) => {
   res.json(history);
 };
 historyCtrl.getHistoryEntryByUser = async (req, res) => {
-  const history = await History.find(req.params.id);
+  const history = await History.findById(req.params.id);
   res.json(history);
 };
 
