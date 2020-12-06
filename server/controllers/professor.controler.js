@@ -11,7 +11,7 @@ professorCtrl.getUsers = async (req, res) => {
   res.json(users);
 };
 
-professorCtrl.createUser = (req, res) => {
+professorCtrl.createUser = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
     const professor = new Professor({
@@ -20,7 +20,7 @@ professorCtrl.createUser = (req, res) => {
         email: req.body.email,
     });
     console.log(professor)
-    professor
+   await professor
     .save()
     .then((user) => {
       res.send(professor._id);
