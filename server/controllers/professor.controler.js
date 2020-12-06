@@ -44,14 +44,19 @@ professorCtrl.addStudent = async (req, res) => {
     nrc: req.body.nrc,
     professor_id: req.params.id,
   });
-  await user.save()
+  await user.save();
   await student.save();
   await Professor.findByIdAndUpdate(
     req.params.id,
     { $push: { student: student } },
     { new: true, useFindAndModify: false }
   );
-  res.send("Student Added")
+  res.send("Student Added");
+};
+
+professorCtrl.getStudents = async (req, res) => {
+  const student = await Professor.findById(req.params.id).populate("student");
+  res.json(student);
 };
 professorCtrl.logIn = async (req, res) => {
   const { email, password } = req.body;
