@@ -19,7 +19,9 @@ professorCtrl.createUser = (req, res) => {
         password: hashedPassword,
         email: req.body.email,
     });
-    professor.save()
+    console.log(professor)
+    professor
+    .save()
     .then((user) => {
       res.send(professor._id);
     })
