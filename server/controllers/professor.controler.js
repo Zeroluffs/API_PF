@@ -1,32 +1,33 @@
 const User = require("../models/User");
 const Student = require("../models/Student");
+const Professor = require("../models/Professor");
 const express = require("express");
 const bcrypt = require("bcrypt");
 
-const userCtrl = {};
+const professorCtrl = {};
 
-userCtrl.getUsers = async (req, res) => {
-  const users = await User.find();
+professorCtrl.getUsers = async (req, res) => {
+  const users = await Professor.find();
   res.json(users);
 };
 
-userCtrl.createUser = (req, res) => {
-  const user = new User({
+professorCtrl.createUser = (req, res) => {
+  const user = new Professor({
     name: req.body.name,
     code: req.body.code,
     email: req.body.email,
   });
 
-  const student = new Student({
+  const professor = new Professor({
     name: req.body.name,
-    code: req.body.code,
+    password: req.body.password,
     email: req.body.email,
   });
   user
     .save()
     .then((user) => {
-      student.save();
-      res.send(student._id);
+      professor.save();
+      res.send(professor._id);
     })
     .catch((error) => {
       console.log(error);
@@ -34,9 +35,9 @@ userCtrl.createUser = (req, res) => {
     });
 };
 
-userCtrl.logIn = async (req, res) => {
+professorCtrl.logIn = async (req, res) => {
   const { email, password } = req.body;
-  const user = await Student.findOne({ email });
+  const user = await Professor.findOne({ email });
   const validPass = await bcrypt.compare(password, user.password);
 
   if (!user) {
@@ -51,4 +52,4 @@ userCtrl.logIn = async (req, res) => {
   res.send(user._id);
 };
 
-module.exports = userCtrl;
+module.exports = professorCtrl;

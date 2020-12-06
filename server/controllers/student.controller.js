@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const Student = require("../models/Student");
 const express = require("express");
+const bcrypt = require("bcrypt");
 
 const studentCtrl = {};
 
@@ -15,6 +16,7 @@ studentCtrl.getStudent = async (req, res) => {
 };
 
 studentCtrl.makePassword = async (req, res) => {
+  const salt = await bcrypt.genSalt(10);
   const { email, password, code } = req.body;
   const student = await Student.findOne({ email });
   if (!student) {
@@ -23,8 +25,9 @@ studentCtrl.makePassword = async (req, res) => {
   if (student.code != code) {
     return res.status(401).send("Student Code is Incorrect");
   }
+  const hashedPassword = await bcrypt.hash(req.body.password, salt);
   const info = {
-    password: req.body.password,
+    password: hashedPassword,
   };
   console.log(student._id);
   if (student.password == null) {

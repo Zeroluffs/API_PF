@@ -19,6 +19,7 @@ app.use("/api/history", require("./server/routes/history.routes"));
 app.use("/api/answer", require("./server/routes/answer.routes"));
 app.use("/api/students", require("./server/routes/students.routes"));
 app.use("/api/users", require("./server/routes/users.routes"));
+app.use("/api/professors", require("./server/routes/professor.routes"));
 
 //starting server
 app.listen(port, () => {

@@ -4,12 +4,8 @@ const { Schema } = mongoose
 const ProfessorSchema = new Schema(
   {
     name: String,
-    courses: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Course',
-      },
-    ],
+    email: String, 
+    password: String,
   },
   {
     timestamps: true,
