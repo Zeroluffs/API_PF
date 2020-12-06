@@ -12,27 +12,22 @@ professorCtrl.getUsers = async (req, res) => {
 };
 
 professorCtrl.createUser = (req, res) => {
-  const user = new Professor({
-    name: req.body.name,
-    code: req.body.code,
-    email: req.body.email,
-  });
-
-  const professor = new Professor({
-    name: req.body.name,
-    password: req.body.password,
-    email: req.body.email,
-  });
-  user
-    .save()
-    .then((user) => {
-      professor.save();
-      res.send(professor._id);
-    })
-    .catch((error) => {
-      console.log(error);
-      res.send(400, "Email is already in use");
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(req.body.password, salt);
+    const professor = new Professor({
+        name: req.body.name,
+        password: hashedPassword,
+        email: req.body.email,
     });
+    professor.save()
+    // .then((user) => {
+    //   res.send(professor._id);
+    // })
+    // .catch((error) => {
+    //   console.log(error);
+    //   res.send(400, "Email is already in use");
+    // });
+    res.send(professor._id);
 };
 
 professorCtrl.logIn = async (req, res) => {
