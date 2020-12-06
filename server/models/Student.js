@@ -7,6 +7,12 @@ const StudentSchema = new Schema(
     email: { type: String, unique: true, required: true, dropDups: true },
     password: String,
     code: String,
+    course: String,
+    nrc: String,
+    professor_id: {
+      type: Schema.Types.ObjectId,
+      ref: "Professor",
+    },
     history: [
       {
         type: Schema.Types.ObjectId,
