@@ -20,14 +20,13 @@ professorCtrl.createUser = (req, res) => {
         email: req.body.email,
     });
     professor.save()
-    // .then((user) => {
-    //   res.send(professor._id);
-    // })
-    // .catch((error) => {
-    //   console.log(error);
-    //   res.send(400, "Email is already in use");
-    // });
-    res.send(professor._id);
+    .then((user) => {
+      res.send(professor._id);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.send(400, "Email is already in use");
+    });
 };
 
 professorCtrl.logIn = async (req, res) => {
