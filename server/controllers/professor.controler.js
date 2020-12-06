@@ -12,15 +12,15 @@ professorCtrl.getUsers = async (req, res) => {
 };
 
 professorCtrl.createUser = async (req, res) => {
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(req.body.password, salt);
-    const professor = new Professor({
-        name: req.body.name,
-        password: hashedPassword,
-        email: req.body.email,
-    });
-    console.log(professor)
-   await professor
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(req.body.password, salt);
+  const professor = new Professor({
+    name: req.body.name,
+    password: hashedPassword,
+    email: req.body.email,
+  });
+  console.log(professor);
+  await professor
     .save()
     .then((user) => {
       res.send(professor._id);
@@ -30,7 +30,29 @@ professorCtrl.createUser = async (req, res) => {
       res.send(400, "Email is already in use");
     });
 };
+professorCtrl.addStudent = async (req, res) => {
+  const user = new User({
+    name: req.body.name,
+    code: req.body.code,
+    email: req.body.email,
+  });
 
+  const student = new Student({
+    name: req.body.name,
+    code: req.body.code,
+    email: req.body.email,
+    nrc: req.body.nrc,
+    professor_id: req.params.id,
+  });
+  await user.save()
+  await student.save();
+  await Professor.findByIdAndUpdate(
+    req.params.id,
+    { $push: { student: student } },
+    { new: true, useFindAndModify: false }
+  );
+  res.send("Student Added")
+};
 professorCtrl.logIn = async (req, res) => {
   const { email, password } = req.body;
   const user = await Professor.findOne({ email });
