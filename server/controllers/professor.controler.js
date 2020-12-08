@@ -75,7 +75,10 @@ professorCtrl.logIn = async (req, res) => {
 
   //validates  hashed password in database with the one you just sent
 
-  res.send(user._id);
+  res.json({
+    _id: user._id,
+    role: user.role,
+  });
 };
 
 professorCtrl.deleteStudent = async (req, res) => {
