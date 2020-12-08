@@ -18,6 +18,7 @@ professorCtrl.createUser = async (req, res) => {
     name: req.body.name,
     password: hashedPassword,
     email: req.body.email,
+    role: req.body.role,
   });
   console.log(professor);
   await professor
@@ -75,7 +76,10 @@ professorCtrl.logIn = async (req, res) => {
 
   //validates  hashed password in database with the one you just sent
   console.log("user data" + "" + user);
-  res.send(user);
+  res.json({
+    _id: user.id,
+    role: user.role,
+  });
 };
 
 professorCtrl.deleteStudent = async (req, res) => {
