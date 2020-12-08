@@ -6,6 +6,7 @@ const ProfessorSchema = new Schema(
     name: String,
     email: String,
     password: String,
+    role: String,
     student: [
       {
         type: Schema.Types.ObjectId,
