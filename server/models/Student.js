@@ -13,6 +13,10 @@ const StudentSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "Professor",
     },
+    user_id:{
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
     history: [
       {
         type: Schema.Types.ObjectId,

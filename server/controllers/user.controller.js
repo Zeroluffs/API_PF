@@ -21,6 +21,7 @@ userCtrl.createUser = (req, res) => {
     name: req.body.name,
     code: req.body.code,
     email: req.body.email,
+    user_id: user._id,
   });
   user
     .save()

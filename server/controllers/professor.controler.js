@@ -76,4 +76,14 @@ professorCtrl.logIn = async (req, res) => {
   res.send(user._id);
 };
 
+professorCtrl.deleteStudent = async (req, res) => {
+  await User.findByIdAndRemove(req.params.studentID);
+  await Student.findByIdAndRemove(req.params.studentID);
+  await Professor.findByIdAndUpdate(
+    req.params.id,
+    { $pull: { student: req.params.studentID } },
+    { new: true }
+  );
+};
+
 module.exports = professorCtrl;
