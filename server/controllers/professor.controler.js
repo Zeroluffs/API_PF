@@ -36,6 +36,7 @@ professorCtrl.addStudent = async (req, res) => {
     code: req.body.code,
     email: req.body.email,
   });
+  console.log("this is the user ID" + user._id);
 
   const student = new Student({
     name: req.body.name,
@@ -43,6 +44,7 @@ professorCtrl.addStudent = async (req, res) => {
     email: req.body.email,
     nrc: req.body.nrc,
     professor_id: req.params.id,
+    user_id: user._id,
   });
   await user.save();
   await student.save();
