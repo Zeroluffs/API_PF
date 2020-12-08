@@ -16,7 +16,7 @@ userCtrl.createUser = (req, res) => {
     code: req.body.code,
     email: req.body.email,
   });
-
+  console.log("this is the user ID" + user._id);
   const student = new Student({
     name: req.body.name,
     code: req.body.code,
