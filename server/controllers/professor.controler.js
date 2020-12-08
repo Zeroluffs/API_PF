@@ -86,6 +86,7 @@ professorCtrl.deleteStudent = async (req, res) => {
     { $pull: { student: req.params.studentID } },
     { new: true }
   );
+  res.send("Student Deleted")
 };
 
 module.exports = professorCtrl;
