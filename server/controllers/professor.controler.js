@@ -79,7 +79,7 @@ professorCtrl.logIn = async (req, res) => {
 };
 
 professorCtrl.deleteStudent = async (req, res) => {
-  await User.findByIdAndRemove(req.params.studentID);
+  await User.findByIdAndRemove(req.params.userID);
   await Student.findByIdAndRemove(req.params.studentID);
   await Professor.findByIdAndUpdate(
     req.params.id,

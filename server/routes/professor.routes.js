@@ -8,6 +8,6 @@ router.get("/:id", user.getStudents);
 router.post("/", user.createUser);
 router.post("/login", user.logIn);
 router.post("/:id", user.addStudent);
-router.delete("/:id/:studentID", user.deleteStudent);
+router.delete("/:id/:studentID/:userID", user.deleteStudent);
 
 module.exports = router;
