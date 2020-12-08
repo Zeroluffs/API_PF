@@ -74,7 +74,7 @@ professorCtrl.logIn = async (req, res) => {
   }
 
   //validates  hashed password in database with the one you just sent
-
+  console.log("user data" + "" + user);
   res.json({
     _id: user._id,
     role: user.role,
