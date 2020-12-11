@@ -93,4 +93,18 @@ professorCtrl.deleteStudent = async (req, res) => {
   res.send("Student Deleted");
 };
 
+professorCtrl.deleteProfessor = async (req, res) => {
+  await Professor.findByIdAndRemove(req.params.id);
+  res.send("Professor Deleted");
+};
+
+professorCtrl.updateProfessor = async (req, res) => {
+  await Professor.findByIdAndUpdate(
+    req.params.id,
+    { $set: req.body },
+    { new: true }
+  );
+  res.send("Professor Updated");
+};
+
 module.exports = professorCtrl;

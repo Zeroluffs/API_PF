@@ -94,4 +94,12 @@ studentCtrl.getTryPerLevel = async (req, res) => {
   res.json({ tried: n });
 };
 
+studentCtrl.updateStudent = async (req, res) => {
+  await Student.findByIdAndUpdate(
+    req.params.id,
+    { $set: req.body },
+    { new: true }
+  );
+  res.send("Student Updated");
+};
 module.exports = studentCtrl;
