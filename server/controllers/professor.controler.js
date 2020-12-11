@@ -125,9 +125,7 @@ professorCtrl.makePassword = async (req, res) => {
       { $set: info },
       { new: true }
     );
-    res.json({
-      status: "Password Assigned",
-    });
+    res.status(200).send("Password Assigned");
   }
   res.json({
     status: "User already has a password",
