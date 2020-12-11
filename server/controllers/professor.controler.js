@@ -16,9 +16,10 @@ professorCtrl.createUser = async (req, res) => {
   const hashedPassword = await bcrypt.hash(req.body.password, salt);
   const professor = new Professor({
     name: req.body.name,
-    password: hashedPassword,
+    //password: hashedPassword,
     email: req.body.email,
-    role: req.body.role,
+    code: req.body.code,
+    //role: req.body.role,
   });
   console.log(professor);
   await professor
