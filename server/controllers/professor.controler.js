@@ -108,4 +108,29 @@ professorCtrl.updateProfessor = async (req, res) => {
   res.send("Professor Updated");
 };
 
+professorCtrl.makePassword = async (req, res) => {
+  const salt = await bcrypt.genSalt(10);
+  const { email, password } = req.body;
+  const professor = await Professor.findOne({ email });
+  if (!professor) {
+    return res.status(401).send("Email does not exist");
+  }
+  const hashedPassword = await bcrypt.hash(req.body.password, salt);
+  const info = {
+    password: hashedPassword,
+  };
+  if (professor.password == null) {
+    await Professor.findByIdAndUpdate(
+      professor._id,
+      { $set: info },
+      { new: true }
+    );
+    res.json({
+      status: "Password Assigned",
+    });
+  }
+  res.json({
+    status: "User already has a password",
+  });
+};
 module.exports = professorCtrl;

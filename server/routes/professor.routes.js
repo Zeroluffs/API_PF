@@ -10,5 +10,6 @@ router.post("/login", user.logIn);
 router.post("/:id", user.addStudent);
 router.delete("/:id/:studentID/:userID", user.deleteStudent);
 router.delete("/:id", user.deleteProfessor);
-router.put/("/:id", user.updateProfessor)
+router.put / ("/:id", user.updateProfessor);
+router.put("/", user.makePassword);
 module.exports = router;
