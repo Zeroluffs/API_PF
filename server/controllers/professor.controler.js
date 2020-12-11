@@ -12,8 +12,8 @@ professorCtrl.getUsers = async (req, res) => {
 };
 
 professorCtrl.createUser = async (req, res) => {
-  const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(req.body.password, salt);
+  // const salt = await bcrypt.genSalt(10);
+  // const hashedPassword = await bcrypt.hash(req.body.password, salt);
   const professor = new Professor({
     name: req.body.name,
     //password: hashedPassword,
