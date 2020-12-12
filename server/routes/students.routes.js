@@ -9,5 +9,5 @@ router.get("/:id/:level", student.getBestOfStudent);
 router.get("/:id/try/:level", student.getTryPerLevel);
 
 router.put("/", student.makePassword);
-router.put(":id", student.updateStudent);
+router.patch(":id", student.updateStudent);
 module.exports = router;
