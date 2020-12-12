@@ -61,9 +61,7 @@ professorCtrl.addStudent = async (req, res) => {
 professorCtrl.getStudents = async (req, res) => {
   const student = await Professor.findById(req.params.id).populate("student");
   const students = student.student;
-  res.json({
-    data: students,
-  });
+  res.json(students);
 };
 professorCtrl.logIn = async (req, res) => {
   const { email, password } = req.body;
