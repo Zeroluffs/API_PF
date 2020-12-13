@@ -6,14 +6,14 @@ const StudentSchema = new Schema(
     name: String,
     email: { type: String, unique: true, required: true, dropDups: true },
     password: String,
-    code: String,
+    code: Number,
     course: String,
-    nrc: String,
+    nrc: Number,
     professor_id: {
       type: Schema.Types.ObjectId,
       ref: "Professor",
     },
-    user_id:{
+    user_id: {
       type: Schema.Types.ObjectId,
       ref: "User",
     },
