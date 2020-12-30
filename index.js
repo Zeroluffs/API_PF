@@ -20,8 +20,9 @@ app.use("/api/answer", require("./server/routes/answer.routes"));
 app.use("/api/students", require("./server/routes/students.routes"));
 app.use("/api/users", require("./server/routes/users.routes"));
 app.use("/api/professors", require("./server/routes/professor.routes"));
+app.use("/api/stats", require("./server/routes/stat.routes"));
 
 //starting server
 app.listen(port, () => {
-  console.log("Server is Working", port)
+  console.log("Server is Working", port);
 });
